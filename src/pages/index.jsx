@@ -10,7 +10,7 @@ function Home() {
     margin: "auto",
     marginBottom: "-20px",
     background: `linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0.752),
+        rgba(0, 0, 0, 0.552),
         black
       )`,
   };
