@@ -8,7 +8,6 @@ function Home() {
   const slideStyled = {
     margin: "auto",
     marginBottom: "-20px",
-    width: '100%',
     background: `linear-gradient(to bottom, 
         rgba(0, 0, 0, 0.552),
         black
@@ -81,8 +80,9 @@ function Home() {
           <Card.Body>
             <Card.Title>Deputados</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              #AoVivo | acompanhe a Sessão Solene do Plenário da Câmara dos
+              Deputados para comemoração dos 73 anos da Associação Nacional dos
+              Auditores Fiscais da Receita
             </Card.Text>
           </Card.Body>
         </Card>
@@ -96,8 +96,9 @@ function Home() {
           <Card.Body>
             <Card.Title>Orgãos</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Órgão é uma unidade do Poder Executivo Federal (como ministério,
+              secretaria ou entidade) responsável pela execução de políticas
+              públicas e/ou pela administração do Estado.
             </Card.Text>
           </Card.Body>
         </Card>
@@ -114,8 +115,9 @@ function Home() {
           <Card.Body>
             <Card.Title>Votações</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Tabela de votações Tabela de votações por partido Tabela de
+              votação agregada por partido e voto Tabela de votação agregada por
+              voto e UF.
             </Card.Text>
           </Card.Body>
         </Card>
@@ -132,8 +134,9 @@ function Home() {
           <Card.Body>
             <Card.Title>Partidos</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Veja o tamanho de cada bloco ou partido na Câmara e conheça seus
+              líderes... Líderes do Governo, da Minoria e de Partidos que
+              participam de Bloco...
             </Card.Text>
           </Card.Body>
         </Card>
