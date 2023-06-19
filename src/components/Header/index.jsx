@@ -38,7 +38,7 @@ const Header = () => {
               Partidos
             </Nav.Link>
             <Nav.Link style={linkStyled} href="/proposicoes">
-              Proposicoes
+              Proposicões
             </Nav.Link>
             <Nav.Link style={linkStyled} href="/votacoes">
               Votações
