@@ -9,8 +9,10 @@ function Home() {
     maxWidth: "700px",
     margin: "auto",
     marginBottom: "-20px",
-    background: `rgb(225, 222, 222)`,
-    color: 'black'
+    background: `linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.852),
+        black
+      )`,
   };
   const [index, setIndex] = useState(0);
 
