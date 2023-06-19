@@ -6,9 +6,9 @@ import Link from "next/link";
 import Header from "../components/Header";
 function Home() {
   const slideStyled = {
-    maxWidth: "700px",
     margin: "auto",
     marginBottom: "-20px",
+    width: '100%',
     background: `linear-gradient(to bottom, 
         rgba(0, 0, 0, 0.552),
         black
@@ -35,7 +35,7 @@ function Home() {
               alt="imagem de evento"
             />
           </Link>
-          <Carousel.Caption style={slideStyled}>
+          <Carousel.Caption className={style.slide} style={slideStyled}>
             <h3>Eventos</h3>
             <p>Veja uma descrição dos principais Eventos do momento.</p>
           </Carousel.Caption>
@@ -48,7 +48,7 @@ function Home() {
               alt="imagem de partido"
             />
           </Link>
-          <Carousel.Caption style={slideStyled}>
+          <Carousel.Caption className={style.slide} style={slideStyled}>
             <h3>Partidos</h3>
             <p>Principais partidos em ação.</p>
           </Carousel.Caption>
@@ -61,7 +61,7 @@ function Home() {
               alt="Third slide"
             />
           </Link>
-          <Carousel.Caption style={slideStyled}>
+          <Carousel.Caption className={style.slide} style={slideStyled}>
             <h3>Orgãos</h3>
             <p>Principais orgãos e suas descrições.</p>
           </Carousel.Caption>

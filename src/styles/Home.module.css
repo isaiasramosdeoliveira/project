@@ -1,7 +1,6 @@
 .carousel {
     width: 100%;
     background-color: rgb(225, 222, 222);
-
 }
 
 .imgCard {
@@ -20,6 +19,7 @@
     max-width: 280px;
     flex-flow: 1;
     margin: 10px;
+    font-size: 14px;
 }
 
 .card img {
@@ -27,8 +27,22 @@
     height: 200px;
 }
 
+.slide {
+    max-width: 700px;
+    margin: auto;
+}
+
 @media (max-width:700px) {
-    .cardContent {}
+    .carousel {
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .imgCard {
+        width: 500px;
+        margin: auto;
+        height: 280px;
+    }
 
     .card {
         height: 350px;
