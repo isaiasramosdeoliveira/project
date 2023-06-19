@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+.deputado{
+    gap: 20px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: aliceblue;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.231);
+    border-radius: 5px;
+}
+
+.deputado .fotoDoDeputado{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.deputado .descricao{
+    width: 300px;
+}
