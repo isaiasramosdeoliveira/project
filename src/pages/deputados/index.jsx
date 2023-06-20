@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import style from "./Deputados.module.css";
 import { Button, Form } from "react-bootstrap";
-import http from '../../config/http'
+import http from "../../config/http";
 import Link from "next/link";
 
 const Deputados = () => {
   const [deputados, setDeputados] = useState([]);
   const [paginas, setPaginas] = useState(6);
-  const [entrada, setEntrada] = useState("");
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [partido, setPartido] = useState("");
   const handleCarregarMais = () => {
     let numeroDePaginas = paginas;
     numeroDePaginas += 6;
@@ -15,14 +17,37 @@ const Deputados = () => {
   };
   useEffect(() => {
     const pegarDeputados = async () => {
-      http.get(`/deputados?nome=${entrada}`).then((res) => {
-        const dados = res.data.dados.splice(0, paginas);
+      http
+        .get(`/deputados?siglaPartido=${partido}&nome=${nome}`)
+        .then((res) => {
+          const dados = res.data.dados.splice(0, paginas);
+          setDeputados(dados);
+          if (email) {
+            dados.filter((deputado, index, array) => {
+              http
+                .get(
+                  `https://dadosabertos.camara.leg.br/api/v2/deputados/${deputado.id}`
+                )
+                .then((res) => {
+                  const slug = res.data.dados.ultimoStatus.email
+                    .replace("@camara.leg.br", "")
+                    .replace("dep.", "");
+                  const dados = res.data.dados.ultimoStatus;
+                  if (slug.match(email)) {
+                    setDeputados([dados]);
+                  }
+                });
+            });
+          }
+          setDeputados(dados);
+        });
 
-        setDeputados(dados);
+      http.get(`/deputados?nome=${nome}`).then((res) => {
+        const dados = res.data.dados.splice(0, paginas);
       });
     };
     pegarDeputados();
-  }, [entrada, paginas]);
+  }, [nome, email, partido, paginas]);
   useEffect(() => {
     const pegarDeputados = async () => {
       http.get("/deputados").then((res) => {
@@ -34,11 +59,25 @@ const Deputados = () => {
   }, [paginas]);
   return (
     <>
-      <Form.Control
-        className={"filtarDados"}
-        placeholder="Buscar por deputado"
-        onChange={(e) => setEntrada(e.target.value)}
-      />
+      <div className={style.filtros}>
+        <Form.Control
+          className={style.filtarDados}
+          placeholder="Nome"
+          onChange={(e) => setNome(e.target.value)}
+        />
+
+        <Form.Control
+          className={style.filtarDados}
+          placeholder="E-mail"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <Form.Control
+          className={style.filtarDados}
+          placeholder="Partido"
+          onChange={(e) => setPartido(e.target.value)}
+        />
+      </div>
       <section className={style.deputados}>
         {deputados.map((deputado) => (
           <Link
@@ -48,14 +87,19 @@ const Deputados = () => {
           >
             <a className={style.deputado}>
               <img src={deputado.urlFoto} alt="foto do deputado" />
-              <h4>{deputado.nome}</h4>
               <table>
                 <tbody className={style.describe}>
                   <tr>
+                    <td>Nome</td>
+                    <td>E-mail</td>
+                    <td>Legislatura</td>
                     <td>UF</td>
                     <td>Partido</td>
                   </tr>
                   <tr>
+                    <td>{deputado.nome}</td>
+                    <td>{deputado.email}</td>
+                    <td>{deputado.idLegislatura}</td>
                     <td>{deputado.siglaUf}</td>
                     <td>
                       {!deputado.siglaPartido

@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import style from "./Evento.module.css";
 import http from "../../config/http";
 
 const Eventos = () => {
+  const [situacao, setSituacao] = useState("");
+  const [tipo, setTipo] = useState("");
   const [eventos, setEventos] = useState([]);
-  const [paginas, setPaginas] = useState(6);
-  const handleCarregarMais = () => {
-    let numeroDePaginas = paginas;
-    numeroDePaginas += 6;
-    setPaginas(numeroDePaginas);
-  };
   useEffect(() => {
     const pegarEventos = async () => {
       http.get("/eventos").then((res) => {
-        const dados = res.data.dados.splice(0, paginas);
+        const dados = res.data.dados
         setEventos(dados);
+        const dadosFiltrados = []
+        dados.filter((evento) => {
+          if (evento.descricaoTipo.match(tipo)) {
+            dadosFiltrados.push(evento);
+          }
+        });
+        setEventos(dadosFiltrados)
       });
     };
     pegarEventos();
-  }, [paginas]);
+  }, [tipo, situacao]);
   return (
     <>
+      <div className={style.filtros}>
+        <select onChange={(e) => setTipo(e.target.value)}>
+          <option value="" defaultValue>
+            Selecione um tipo
+          </option>
+          <option value="Audiência Pública">Audiência Pública</option>
+          <option value="Seminário">Seminário</option>
+          <option value="Reunião Deliberativa">Reunião Deliberativa</option>
+          <option value="Visita Técnica">Visita Técnica</option>
+          <option value="Debate">Debate</option>
+        </select>
+      </div>
       <section className={style.cards}>
         {eventos.map((evento) => (
           <Card key={evento.id} className={style.card}>
@@ -57,11 +72,6 @@ const Eventos = () => {
             </Card.Body>
           </Card>
         ))}
-        <div className="d-flex w-100 justify-content-center">
-          <Button variant="success" size="md" onClick={handleCarregarMais}>
-            Carregar mais Eventos
-          </Button>
-        </div>
       </section>
     </>
   );
