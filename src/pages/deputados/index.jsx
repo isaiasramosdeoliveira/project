@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Deputados.module.css";
 import { Button, Form } from "react-bootstrap";
-import http from "../../config/http";
+import http from "../../services/http";
 import Link from "next/link";
 
 const Deputados = () => {
