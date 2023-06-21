@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Grafico from "./Grafico";
 import { v4 as uuid } from "uuid";
-import { model } from "mongoose";
 
 const Deputado = () => {
   const params = useParams();
@@ -44,7 +43,6 @@ const Deputado = () => {
             dadosFiltrados.push(modelo)
           })
           setDespesas(dadosFiltrados);
-          console.log(despesas);
       });
     };
     pegarDeputados();
