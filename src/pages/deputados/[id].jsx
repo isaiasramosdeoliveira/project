@@ -5,7 +5,7 @@ import style from "./Deputado.module.css";
 import http from "../../services/http";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Grafico from "./Grafico";
+import Grafico from "../../components/Grafico";
 import { v4 as uuid } from "uuid";
 
 const Deputado = () => {
