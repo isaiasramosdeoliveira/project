@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Proposicoes.module.css";
 import { Card, ListGroup } from "react-bootstrap";
-import http from "../../config/http";
+import http from "../../services/http";
 const Proposicoes = () => {
   const [proposicoes, setProposicoes] = useState([]);
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import style from "./Partidos.module.css";
-import http from "../../config/http";
+import http from "../../services/http";
 const Partidos = () => {
   const [partidos, setPartidos] = useState([]);
   useEffect(() => {

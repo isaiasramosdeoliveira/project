@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Frentes.module.css";
 import { Button, Card, ListGroup } from "react-bootstrap";
-import http from "../../config/http";
+import http from "../../services/http";
 
 const Frentes = () => {
   const [frentes, setFrentes] = useState([]);

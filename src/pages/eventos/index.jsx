@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import style from "./Evento.module.css";
-import http from "../../config/http";
+import http from "../../services/http";
 
 const Eventos = () => {
   const [situacao, setSituacao] = useState("");

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import style from "./Orgaos.module.css";
-import http from '../../config/http'
+import http from "../../services/http";
 const Orgaos = () => {
   const [orgaos, setOrgaos] = useState([]);
   const [paginas, setPaginas] = useState(6);
