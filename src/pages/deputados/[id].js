@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
 import { Button, Table } from "react-bootstrap";
 import style from "./Deputado.module.css";
 import http from "../../services/http";
@@ -9,7 +8,6 @@ import Grafico from "../../components/Grafico";
 import { v4 as uuid } from "uuid";
 
 const Deputado = () => {
-  const params = useParams();
   const [deputado, setDeputado] = useState([]);
   const [profissoes, setProfissoes] = useState([]);
   const [despesas, setDespesas] = useState([]);

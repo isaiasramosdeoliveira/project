@@ -6,9 +6,6 @@ const Grafico = ({dados}) => {
   const data = dados;
   const [userData, setUserData] = useState({
     labels: data.map((data) => data.data),
-    options: {
-      update: true
-    },
     datasets: [
       {
         label: "Despesas",

@@ -23,28 +23,16 @@ const Deputados = () => {
           const dados = res.data.dados.splice(0, paginas);
           setDeputados(dados);
           if (email) {
-            dados.filter((deputado, index, array) => {
-              http
-                .get(
-                  `https://dadosabertos.camara.leg.br/api/v2/deputados/${deputado.id}`
-                )
-                .then((res) => {
-                  const slug = res.data.dados.ultimoStatus.email
-                    .replace("@camara.leg.br", "")
-                    .replace("dep.", "");
-                  const dados = res.data.dados.ultimoStatus;
-                  if (slug.match(email)) {
-                    setDeputados([dados]);
-                  }
-                });
+            dados.filter((deputado) => {
+              const slug = deputado.email
+                .replace("@camara.leg.br", "")
+                .replace("dep.", "");
+              if (slug.match(email)) {
+                setDeputados([deputado]);
+              }
             });
           }
-          setDeputados(dados);
         });
-
-      http.get(`/deputados?nome=${nome}`).then((res) => {
-        const dados = res.data.dados.splice(0, paginas);
-      });
     };
     pegarDeputados();
   }, [nome, email, partido, paginas]);
